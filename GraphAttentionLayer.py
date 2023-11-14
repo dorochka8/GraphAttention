@@ -29,7 +29,7 @@ class GraphAttentionLayer(nn.Module):
     ], dim=1
     ).view(N, -1, 2 * self.output_dim)
     
-    e = F.leaky_relu(
+    e = F.leaky_relu( # use LeakyReLU as in the original paper
         torch.matmul(
             attention_input, self.attention_mechanism
         ).squeeze(2),negative_slope=self.alpha
