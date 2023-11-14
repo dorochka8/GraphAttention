@@ -4,4 +4,4 @@ Here is implemented the paper by Petar Veličković et al., `Graph Attention Net
 https://arxiv.org/pdf/1710.10903.pdf
 
 ## Overview
-
+Used seed `torch.manual_seed(46911356)`.
