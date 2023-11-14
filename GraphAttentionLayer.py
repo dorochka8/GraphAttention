@@ -34,7 +34,9 @@ class GraphAttentionLayer(nn.Module):
             attention_input, self.attention_mechanism
         ).squeeze(2),negative_slope=self.alpha
     )
-    
+
+    # zero_vec to make the further usage softmax interpritable 
+    # (if left with zeros, they would contribute to the softmax calculation
     zero_vec = -9e15 * torch.ones_like(e)
 
     attention = torch.where(adj > 0, e, zero_vec)
