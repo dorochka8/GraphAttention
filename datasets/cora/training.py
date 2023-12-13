@@ -1,5 +1,4 @@
 import numpy as np 
-
 import random
 import time
 import torch
@@ -7,6 +6,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from preprocess_data import extracted_info, accuracy
+from config import config
+
 
 def training(model, X, y, idx_train, idx_val, adj, optimizer, epochs):
     t_total = time.time()
@@ -42,14 +43,26 @@ def training(model, X, y, idx_train, idx_val, adj, optimizer, epochs):
             counter = 0
         else:
             counter += 1
-        if counter == 100:
+        if counter == config['threshold']:
             break
+
 
 device = 'cuda' if torch.cuda.is_available else 'cpu'
 
-random.seed(46911356)
-np.random.seed(46911356)
-torch.manual_seed(46911356)
+random.seed(config['seed'])
+np.random.seed(config['seed'])
+torch.manual_seed(config['seed'])
 if device == 'cuda':
-    torch.cuda.manual_seed(46911356)
+    torch.cuda.manual_seed(config['seed'])
 
+
+idx_train, idx_val, idx_test, adj, features, labels = extracted_info()
+model = None
+optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'], weight_decay=config['weight_decay'] )
+if device == 'cuda':
+    model.cuda()
+    idx_train, idx_val, idx_test = idx_train.cuda(), idx_val.cuda(), idx_test.cuda()
+    adj, features, labels = adj.cuda(), features.cuda(), labels.cuda()
+
+
+training(model, features, labels, idx_train, idx_val, adj, optimizer, config['train_epochs'])
