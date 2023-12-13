@@ -2,6 +2,7 @@ import numpy as np
 import scipy as sp
 import torch
 
+
 def do_onehot(labels):
     unique_classes = sorted(list(set(labels)))
     classes_dict = {
@@ -12,6 +13,7 @@ def do_onehot(labels):
         classes_dict.get, labels
     )), dtype=np.int32)
     return onehot_labels
+
 
 def do_normalized_adjacency(edges, labels):
     adj = sp.coo_matrix((np.ones(edges.shape[0]), (edges[:, 0], edges[:, 1])), 
@@ -28,6 +30,7 @@ def do_normalized_adjacency(edges, labels):
     adj_matrix_normalized = adj @ row_inv_sqrt.T @ row_inv_sqrt
     return adj_matrix_normalized
 
+
 def do_normalized_features(features):
     row_sum = sum(features, dim=1)
     row_inv_sqrt = 1 / (row_sum).flatten()
@@ -35,6 +38,7 @@ def do_normalized_features(features):
     row_inv_sqrt = sp.diags(row_inv_sqrt)
     features = row_inv_sqrt @ features
     return features
+
 
 def extracted_info(path, dataset):
     print(f'Loading {dataset} dataset')
@@ -70,6 +74,7 @@ def extracted_info(path, dataset):
     idx_test  = torch.LongTensor(range(500, 1500))
 
     return idx_train, idx_val, idx_test, adj, features, labels
+
 
 def accuracy(outputs, labels):
     preds = outputs.max(1)[1].type_as(labels)
