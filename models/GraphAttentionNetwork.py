@@ -22,5 +22,5 @@ class GraphAttentionNetwork(nn.Module):
     x = F.dropout(x, self.dropout)
     x = F.leaky_relu(self.out_ttention(x, adj))
 
-    return F.log_soft(x, dim=1)
+    return F.log_softmax(x, dim=1)
     
