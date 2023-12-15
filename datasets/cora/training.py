@@ -66,6 +66,7 @@ def training(model, X, y, idx_train, idx_val, adj, optimizer, epochs):
             
     print(f'time spent: {(time.time()-t_total):.5f}')
     plt.plot(loss_values)
+    plt.title(f'"Cora" dataset. Train loss. Last_loss: {loss_values[-1]:.3f}')
     plt.show()
     return 
 
