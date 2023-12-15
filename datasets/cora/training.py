@@ -16,7 +16,8 @@ from preprocess_data import extracted_info, accuracy, modify_adj
 
 def training(model, X, y, idx_train, idx_val, adj, optimizer, epochs):
     t_total = time.time()
-    loss_values = []
+    loss_trains, acc_trains = [], []
+    loss_vals, acc_vals = [], []
     best, best_epoch, counter = 0.0, 0, 0
     model.train()
     for epoch in range(epochs):
@@ -26,7 +27,8 @@ def training(model, X, y, idx_train, idx_val, adj, optimizer, epochs):
         outputs = model(X[idx_train], modify_adj(adj, idx_train))
         loss_train = F.cross_entropy(outputs, y[idx_train])
         acc_train  = accuracy(outputs, y[idx_train])
-        loss_values.append(loss_train.item())
+        loss_trains.append(loss_train.item())
+        acc_trains.append(acc_train.item())
 
         loss_train.backward()
         optimizer.step()
@@ -36,6 +38,8 @@ def training(model, X, y, idx_train, idx_val, adj, optimizer, epochs):
             outputs  = model(X[idx_val], modify_adj(adj, idx_val))
             loss_val = F.cross_entropy(outputs, y[idx_val])
             acc_val  = accuracy(outputs, y[idx_val])
+            loss_vals.append(loss_val.item())
+            acc_vals.append(acc_val.item())
     
         if (epoch + 1) % 10 == 0:
             print(f'Epoch: {epoch+1}')
@@ -65,8 +69,19 @@ def training(model, X, y, idx_train, idx_val, adj, optimizer, epochs):
             os.remove(file)
             
     print(f'time spent: {(time.time()-t_total):.5f}')
-    plt.plot(loss_values)
-    plt.title(f'"Cora" dataset. Train loss. Last_loss: {loss_values[-1]:.3f}')
+    fig, axs = plt.subplots(2, 2, figsize=(8, 8))
+    fig.suptitle('"Cora" dataset')
+    axs[0, 0].plot(loss_trains)
+    axs[0, 0].set_title('Train loss', fontsize=10)
+    axs[0, 1].plot(acc_trains, 'tab:orange')
+    axs[0, 1].set_title('Train accuracy', fontsize=10)
+    axs[1, 0].plot(loss_vals)
+    axs[1, 0].set_title('Validation loss', fontsize=10)
+    axs[1, 1].plot(acc_vals, 'tab:orange')
+    axs[1, 1].set_title('Validation accuracy', fontsize=10)
+    for ax in axs.flat:
+        ax.set_xlabel('epochs', fontsize=8)
+        ax.tick_params(labelsize=8)
     plt.show()
     return 
 
