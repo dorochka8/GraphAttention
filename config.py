@@ -10,7 +10,7 @@ config = {
     'model_num_hidden' : 8,   # number of hidden layers
     
     # model training
-    'train_epochs'     : 200, # total number of epochs to train
+    'train_epochs'     : 1000, # total number of epochs to train
     'seed'             : 46911356,
-    'patience'         : 100, 
+    'patience'         : 1000, 
     }
