@@ -23,4 +23,5 @@ Setups are in `config.py`.
     - (6) Rule_Learning.
 Most papers belongs to 3rd class.
 
-Training process takes less than a minute (to pass 1000 epochs) and train accuracy is 0.87857, while validation accuracy is 0.442. 
+Training process takes less than a minute (to pass 1000 epochs) and last train accuracy is 0.87857, last validation accuracy is 0.442. \
+<img src="https://github.com/dorochka8/GraphAttention/assets/97133490/39c85abd-fc05-4e77-a3d0-4f9e5ab9f525" width="600" height="500">
