@@ -26,17 +26,15 @@ class GraphAttentionLayer(nn.Module):
         # zero_vec to make the further usage softmax interpritable 
         # (if left with zeros, they would contribute to the softmax calculation
         zero_vec = -9e15 * torch.ones_like(e)
-
         attention = torch.where(adj > 0, e, zero_vec)
         attention = F.softmax(attention, dim=1)
         attention = F.dropout(attention, p=self.dropout, training=self.training)
         h_prime = torch.matmul(attention, x)
-
-        return F.leaky_relu(h_prime, negative_slope=self.alpha)
+        return F.elu(h_prime, alpha=self.alpha)
     
 
     def _do_attention_mech_input(self, x):
         w1 = torch.matmul(x, self.attention_mechanism[:self.output_dim, :])
         w2 = torch.matmul(x, self.attention_mechanism[self.output_dim:, :])
         e = w1 + w2.T
-        return F.leaky_relu(e) 
+        return F.elu(e) 
