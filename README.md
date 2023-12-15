@@ -18,7 +18,6 @@ Citation dataset, 2708 nodes (papers). 7 classes:
   - (4) Probabilistic_Methods;
   - (5) Case_Based;
   - (6) Rule_Learning.
-Most papers belongs to 3rd class.
 
 ## Training
 Training process takes less than a minute (to pass 1000 epochs) and last train accuracy is 0.879, last validation accuracy is 0.442. \
