@@ -5,7 +5,7 @@ https://arxiv.org/pdf/1710.10903.pdf
 
 
 ## Overview
-Before start working, please make sure that you have installed all required libraries (see `requirements.txt`).
+Before start working, please make sure you have installed all required libraries (see `requirements.txt`).
 
 Setups are in `config.py`. \
 All datasets are citation networks from the paper https://arxiv.org/pdf/1603.08861.pdf. 
