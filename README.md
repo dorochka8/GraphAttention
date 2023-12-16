@@ -20,5 +20,12 @@ Citation dataset, 2708 nodes (papers). 7 classes:
   - (6) Rule_Learning.
 
 ## Training
-Training process takes less than a minute (to pass 1000 epochs) and last train accuracy is 0.879, last validation accuracy is 0.442. \
-<img src="https://github.com/dorochka8/GraphAttention/assets/97133490/39c85abd-fc05-4e77-a3d0-4f9e5ab9f525" width="600" height="500">
+To start training the model open `training -> main.py`.
+
+Training process takes less than a minute (to pass 1000 epochs). \
+Cora last train accuracy is 0.879, last validation accuracy is 0.442. \
+<img src="https://github.com/dorochka8/GraphAttention/assets/97133490/34b21715-c3c9-47e0-8ef9-6f816e967f4f" width="600" height="500"> \
+CiteSeer last train accuracy is 0.950, last validation accuracy is 0.400. \
+<img src="https://github.com/dorochka8/GraphAttention/assets/97133490/6d0aa06c-b0c0-4ddd-a58e-e39e64ae7422" width="600" height="500"> \
+PubMed last train accuracy is 1.000, last validation accuracy is 0.606. \
+<img src="https://github.com/dorochka8/GraphAttention/assets/97133490/970d79be-7085-4561-a55d-c33462ea0bc3" width="600" height="500">\
