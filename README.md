@@ -20,7 +20,7 @@ Citation dataset, 2708 nodes (papers). 7 classes:
   - (6) Rule_Learning.
 
 ## Training
-To start training the model open `training -> main.py`.
+To start training the model do `training -> main.py`.
 
 Training process takes less than a minute (to pass 1000 epochs). \
 Cora last train accuracy is 0.879, last validation accuracy is 0.442. \
