@@ -32,7 +32,7 @@ All datasets are citation networks from the paper https://arxiv.org/pdf/1603.088
   - (1) Diabetes_Mellitus_Type1;
   - (2) Diabetes_Mellitus_Type2.
 
-## Training
+## Getting the results
 To start training the model do `training -> main.py`.
 
 Training process takes less than a minute (to pass 1000 epochs). \
