@@ -30,4 +30,4 @@ Cora last train accuracy is 0.879, last validation accuracy is 0.442. \
 CiteSeer last train accuracy is 0.950, last validation accuracy is 0.400. \
 <img src="https://github.com/dorochka8/GraphAttention/assets/97133490/6d0aa06c-b0c0-4ddd-a58e-e39e64ae7422" width="600" height="500"> \
 PubMed last train accuracy is 1.000, last validation accuracy is 0.606. \
-<img src="https://github.com/dorochka8/GraphAttention/assets/97133490/970d79be-7085-4561-a55d-c33462ea0bc3" width="600" height="500">\
+<img src="https://github.com/dorochka8/GraphAttention/assets/97133490/970d79be-7085-4561-a55d-c33462ea0bc3" width="600" height="500">
